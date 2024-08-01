@@ -77,7 +77,6 @@ public class Order {
         return Objects.hash(id, customer, restaurant, TotalPrice, dishes, orderDate);
     }
 
-
     @Override
     public String toString() {
         return "Order{" + "id='" + id + '\'' + ", customer=" + customer + ", restaurant=" + restaurant + ", TotalPrice=" + TotalPrice + ", dishes=" + dishes + ", orderDate=" + orderDate + '}';

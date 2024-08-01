@@ -52,7 +52,6 @@ public class Dish {
         return Double.compare(price, dish.price) == 0 && Objects.equals(id, dish.id) && Objects.equals(name, dish.name) && Objects.equals(description, dish.description);
     }
 
-
     @Override
     public int hashCode() {
         return Objects.hash(id, name, description, price);
