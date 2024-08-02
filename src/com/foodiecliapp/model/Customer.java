@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Customer {
     private String id;
-    private String name;
+    private String Name;
     private String email;
     private String password;
 
     public Customer() {
     }
 
-    public String getId() {
+    public String getCustomerId() {
         return id;
     }
 
@@ -20,11 +20,11 @@ public class Customer {
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getEmail() {
@@ -48,19 +48,19 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(email, customer.email) && Objects.equals(password, customer.password);
+        return Objects.equals(id, customer.id) && Objects.equals(Name, customer.Name) && Objects.equals(email, customer.email) && Objects.equals(password, customer.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, email, password);
+        return Objects.hash(id, Name, email, password);
     }
 
     @Override
     public String toString() {
         return "Customer{" +
                 "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+                ", name='" + Name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
