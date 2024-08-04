@@ -1,6 +1,7 @@
 package com.foodiecliapp.util;
 
 import com.foodiecliapp.model.Customer;
+import com.foodiecliapp.model.Dish;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,10 +20,10 @@ public class CsvReader {
             while((line = br.readLine()) != null){
                 String[] data = line.split(csvSplitBy);
                 Customer customer = new Customer();
-                customer.setId(data[0]);
-                customer.setName(data[1]);
-                customer.setEmail(data[2]);
-                customer.setPassword(data[3]);
+                customer.setId(data[0])
+                        .setName(data[1])
+                        .setEmail(data[2])
+                        .setPassword(data[3]);
                 customersList.add(customer);
             }
         }
@@ -32,5 +33,29 @@ public class CsvReader {
             e.printStackTrace();
         }
         return customersList;
+    }
+
+    public List<Dish> readDishesFromCsv(){
+        String DISHES_CSV_PATH = "D:\\IntelliJ\\Food-CLI\\data\\dishes.csv";
+        String line;
+        List<Dish> dishesList = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(DISHES_CSV_PATH))){
+            String cvsSplitBy = ",";
+            br.readLine();
+            while((line = br.readLine()) != null){
+                String[] data = line.split(cvsSplitBy);
+                Dish dish = new Dish();
+                dish.setId(data[0])
+                    .setName(data[1])
+                    .setDescription(data[2])
+                    .setPrice(Double.parseDouble(data[3]));
+                dishesList.add(dish);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+            System.out.println("Issues in reading csv file from path : "+ DISHES_CSV_PATH);
+            System.exit(0);
+        }
+        return dishesList;
     }
 }
