@@ -2,6 +2,7 @@ package com.foodiecliapp.repository;
 
 import com.foodiecliapp.model.Customer;
 import com.foodiecliapp.util.CsvReader;
+import com.foodiecliapp.util.Factory;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,8 +12,7 @@ public class CustomerRepository {
     private List<Customer> customersList;
 
     public CustomerRepository(){
-        CsvReader csvReader = new CsvReader();
-        this.customersList = csvReader.readCustomersFromCsv();
+        this.customersList = Factory.getCustomerRepository().getAllCustomers();
     }
 
     public List<Customer> getAllCustomers(){
