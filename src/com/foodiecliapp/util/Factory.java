@@ -2,14 +2,13 @@ package com.foodiecliapp.util;
 
 import com.foodiecliapp.controller.CustomerController;
 import com.foodiecliapp.controller.DishController;
+import com.foodiecliapp.controller.OrderController;
 import com.foodiecliapp.controller.RestaurantController;
 import com.foodiecliapp.repository.CustomerRepository;
 import com.foodiecliapp.repository.DishRepository;
+import com.foodiecliapp.repository.OrderRepository;
 import com.foodiecliapp.repository.RestaurantRepository;
-import com.foodiecliapp.service.CustomerServiceImpl;
-import com.foodiecliapp.service.DishServiceImpl;
-import com.foodiecliapp.service.RestaurantService;
-import com.foodiecliapp.service.RestaurantServiceImpl;
+import com.foodiecliapp.service.*;
 
 public class Factory {
 
@@ -51,5 +50,17 @@ public class Factory {
 
     public static RestaurantController getRestaurantController(){
         return new RestaurantController(getRestaurantService());
+    }
+
+    public static OrderRepository getOrderRepository(){
+        return new OrderRepository();
+    }
+
+    public static OrderServiceImpl getOrderService(){
+        return new OrderServiceImpl(getOrderRepository());
+    }
+
+    public static OrderController getOrderController(){
+        return new OrderController(getOrderService());
     }
 }
