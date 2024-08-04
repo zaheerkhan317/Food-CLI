@@ -2,11 +2,13 @@ package com.foodiecliapp.util;
 
 import com.foodiecliapp.model.Customer;
 import com.foodiecliapp.model.Dish;
+import com.foodiecliapp.model.Restaurant;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CsvReader {
@@ -57,5 +59,29 @@ public class CsvReader {
             System.exit(0);
         }
         return dishesList;
+    }
+
+    public List<Restaurant> readRestaurantsFromCsv(){
+        String RESTAURANTS_CSV_PATH = "D:\\IntelliJ\\Food-CLI\\data\\restaurants.csv";
+        String line;
+        List<Restaurant> restaurantList = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(RESTAURANTS_CSV_PATH))){
+            String cvsSplitBy = ",";
+            br.readLine();
+            while((line = br.readLine()) != null){
+                String[] data = line.split(cvsSplitBy);
+                Restaurant restaurant = new Restaurant();
+                restaurant.setId(data[0])
+                        .setName(data[1])
+                        .setAddress(data[2])
+                        .setMenu(Arrays.asList(data[3].split(":")));
+                restaurantList.add(restaurant);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+            System.out.println("Issues in reading csv file from path : "+ RESTAURANTS_CSV_PATH);
+            System.exit(0);
+        }
+        return restaurantList;
     }
 }
