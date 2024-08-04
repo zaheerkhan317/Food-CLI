@@ -12,7 +12,7 @@ public class RestaurantRepository {
     private List<Restaurant> restaurantList;
 
     public RestaurantRepository(){
-        this.restaurantList = Factory.getCsvReader().readRestaurantsFromCsv();
+        this.restaurantList = Factory.getRestaurantRepository().getRestaurantList();
     }
 
     public List<Restaurant> getRestaurantList(){
