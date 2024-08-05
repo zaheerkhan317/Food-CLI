@@ -12,10 +12,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CsvReader {
+    private List<Dish> dishesList;
+
     public List<Customer> readCustomersFromCsv(){
         String customerCsvFilePath = "D:\\IntelliJ\\Food-CLI\\data\\customers.csv";
-        List<Customer> customersList = new ArrayList<>();
         String line;
+        List<Customer> customersList = new ArrayList<>();
+        
         try(BufferedReader br = new BufferedReader(new FileReader(customerCsvFilePath))){
             String csvSplitBy = ",";
             br.readLine();
@@ -53,6 +56,7 @@ public class CsvReader {
                     .setPrice(Double.parseDouble(data[3]));
                 dishesList.add(dish);
             }
+            this.dishesList = dishesList;
         }catch (IOException e){
             e.printStackTrace();
             System.out.println("Issues in reading csv file from path : "+ DISHES_CSV_PATH);

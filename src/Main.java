@@ -9,6 +9,6 @@ public class Main {
         /*CustomerRepository customerRepository = new CustomerRepository();
         System.out.println(customerRepository.getAllCustomers());*/
         Menu menu = new Menu();
-        menu.displayMainMenu();
+        menu.displayMenu();
     }
 }
