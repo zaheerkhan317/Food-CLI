@@ -17,6 +17,7 @@ public class CustomerMenu extends Menu{
         this.customerController = Factory.getCustomerController();
     }
 
+    @Override
     public void displayMenu(){
         try{
             Scanner scanner = new Scanner(System.in);
@@ -45,7 +46,7 @@ public class CustomerMenu extends Menu{
                     case 6 -> deleteCustomerForm();
                     case 7 -> {
                         System.out.println("Thank you, See you again!!");
-                        super.displayMainMenu();
+                        super.displayMenu();
                     }
                     default -> System.out.println("Invalid Input. Please enter the valid input from(1-7)");
                 }
@@ -132,8 +133,11 @@ public class CustomerMenu extends Menu{
             System.out.println("Enter Password");
             String password = scanner.nextLine();
             Customer existingCustomer = customerController.validateCustomerLogin(email,password);
+
             System.out.println("Login Success :");
             System.out.println("Welcome Mr : " + existingCustomer.getName());
+
+            System.out.println("LoggedIn customer : "+existingCustomer.getEmail());
         }catch(CustomerNotFoundException e){
             System.out.println(e.getMessage());
             displayMenu();

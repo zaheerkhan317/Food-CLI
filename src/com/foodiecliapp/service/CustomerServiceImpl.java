@@ -9,12 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class CustomerServiceImpl implements CustomerService{
-    public CustomerRepository customerRepository;
+    public final CustomerRepository customerRepository;
     private Customer currentLoggedInCustomer;
 
     public CustomerServiceImpl(CustomerRepository customerRepository){
         this.customerRepository = customerRepository;
     }
+
     @Override
     public Customer save(Customer customer) throws CustomerExistsException {
 

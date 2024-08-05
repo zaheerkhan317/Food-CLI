@@ -9,10 +9,10 @@ import java.util.Optional;
 
 public class CustomerRepository {
 
-    private List<Customer> customersList;
+    List<Customer> customersList;
 
     public CustomerRepository(){
-        this.customersList = Factory.getCustomerRepository().getAllCustomers();
+        this.customersList = Factory.getCsvReader().readCustomersFromCsv();
     }
 
     public List<Customer> getAllCustomers(){
@@ -33,7 +33,7 @@ public class CustomerRepository {
     }
 
     public Customer updateCustomer(Customer customerToBeUpdated){
-        Optional<Customer> updatedCustomer = this.customersList.stream().filter(customer -> customer.getCustomerId().equals(customerToBeUpdated))
+        Optional<Customer> updatedCustomer = this.customersList.stream().filter(customer -> customer.getCustomerId().equals(customerToBeUpdated.getCustomerId()))
                 .findFirst()
                 .map(customer -> {
                     customer.setName(customerToBeUpdated.getName())
