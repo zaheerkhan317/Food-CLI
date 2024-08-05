@@ -93,7 +93,7 @@ public class OrdersMenu extends Menu{
         List<Dish> dishList = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(System.in);
-            CustomerService customerService = Factory.getCustomerService();
+            CustomerService customerService = Factory.getCustomerServiceImpl();
             RestaurantService restaurantService = Factory.getRestaurantService();
             DishService dishService = Factory.getDishService();
             loggedInCustomer = customerService.getCurrentLoggedInCustomer();
