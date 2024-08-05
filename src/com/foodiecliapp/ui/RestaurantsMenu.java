@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class RestaurantsMenu extends Menu{
 
-    private RestaurantController restaurantController;
+    private final RestaurantController restaurantController;
 
     public RestaurantsMenu(){
         this.restaurantController = Factory.getRestaurantController();
@@ -87,7 +87,8 @@ public class RestaurantsMenu extends Menu{
             System.out.println("Enter Menu Dish Items separated by : (D101:D102)");
             String menu = scanner.nextLine();
             Restaurant restaurant = new Restaurant();
-            restaurant.setName(name)
+            restaurant.setId(id)
+                    .setName(name)
                     .setAddress(address)
                     .setMenu(Arrays.asList(menu.split(":")));
 

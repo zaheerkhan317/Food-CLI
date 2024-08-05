@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public class RestaurantServiceImpl implements RestaurantService{
 
-    private RestaurantRepository restaurantRepository;
+    private final RestaurantRepository restaurantRepository;
 
     public RestaurantServiceImpl(RestaurantRepository restaurantRepository){
         this.restaurantRepository = restaurantRepository;
@@ -22,13 +22,13 @@ public class RestaurantServiceImpl implements RestaurantService{
 
     @Override
     public List<Restaurant> getRestaurantList() {
-        return null;
+        return this.restaurantRepository.getRestaurantList();
     }
 
     @Override
     public Restaurant save(Restaurant restaurant) throws RestaurantExistsException {
         Optional<Restaurant> restaurantById = this.restaurantRepository.findRestaurantById(restaurant.getId());
-        if(restaurantById.isEmpty()){
+        if(restaurantById.isPresent()){
             throw new RestaurantExistsException("Restaurant Already Exists wit id : "+restaurant.getId());
         }
         return this.restaurantRepository.save(restaurant);
