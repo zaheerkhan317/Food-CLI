@@ -28,7 +28,7 @@ public class DishRepository {
     }
 
     public Dish updateDish(Dish dishToBeUpdated){
-        Optional<Dish> dishOptional = this.dishList.stream().filter(dish -> dish.getId().equals(dishToBeUpdated))
+        Optional<Dish> dishOptional = this.dishList.stream().filter(dish -> dish.getId().equals(dishToBeUpdated.getId()))
                 .findFirst()
                 .map(dish -> {
                     dish.setName(dishToBeUpdated.getName())

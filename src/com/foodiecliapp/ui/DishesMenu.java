@@ -11,12 +11,13 @@ import java.util.Scanner;
 
 public class DishesMenu extends Menu{
 
-    private DishController dishController;
+    private final DishController dishController;
 
     public DishesMenu(){
         this.dishController = Factory.getDishController();
     }
 
+    @Override
     public void displayMenu(){
         try{
             Scanner scanner = new Scanner(System.in);

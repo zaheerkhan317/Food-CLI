@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class DishServiceImpl implements DishService{
 
-    private DishRepository dishRepository;
+    private final DishRepository dishRepository;
 
     public DishServiceImpl(DishRepository dishRepository){
         this.dishRepository = dishRepository;
@@ -34,7 +34,7 @@ public class DishServiceImpl implements DishService{
     @Override
     public Dish getDishById(String id) throws DishNotFoundException {
         Optional<Dish> dishById = this.dishRepository.getDishById(id);
-        if(!dishById.isPresent()){
+        if(dishById.isEmpty()){
             throw new DishNotFoundException("Dish not found with id : "+id);
         }
         return dishById.get();
