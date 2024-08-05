@@ -14,8 +14,6 @@ public class Order {
     private List<Dish> dishList;
     private LocalDate orderDate;
 
-    public Order() {
-    }
 
     public String getId() {
         return id;

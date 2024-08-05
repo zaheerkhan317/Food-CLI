@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class OrderServiceImpl implements OrderService{
 
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
     public OrderServiceImpl(OrderRepository orderRepository){
         this.orderRepository = orderRepository;
@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService{
     public Order save(Order order) throws OrderExistsException {
         Optional<Order> orderById = this.orderRepository.findOrderById(order.getId());
         if(orderById.isPresent()){
-            throw new OrderExistsException("Order Already Exists!!!");
+            throw new OrderExistsException("Order Already Exists with this Id : " + order.getId());
         }
         return this.orderRepository.save(order);
     }
